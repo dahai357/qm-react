@@ -1,0 +1,193 @@
+@basefont:"Helvetica Neue", Tahoma, "Microsoft Yahei", "PingFang SC", "ST Heiti", SimHei, sans-serif, "Helvetica Neue", Tahoma, SimSun, "PingFang SC", "ST Heiti", sans-serif, "Chinese Quote", -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "Helvetica Neue", Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+
+.ant-radio-wrapper{ font-family: @basefont; margin-right: 0; color:#212121;}
+
+.modal-body{
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  display: table;
+  z-index: 10000;
+  background: rgba(0,0,0,0.3);
+  text-align: center;
+}
+.modal-div{
+  width: 468px;
+  background: #FFFFFF;
+  display: inline-block;
+}
+.modal-content{
+  display: table-cell;
+  vertical-align: middle;
+}
+.modal-content-header{
+  height: 54px;
+  background-image: url("../../imgs/modal-header.png");
+  background-size: 100% 100%;
+  line-height: 54px;
+  color:#FFFFFF;
+  position: relative;
+  text-align: center;
+  font-size: 20px;
+}
+.modal-content-header-close{
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  line-height: normal;
+  cursor: pointer;
+}
+.modal-content-content{  
+  padding: 10px;
+  padding: 20px 20px 70px;
+}
+.modal-cotent-input{
+  display: inline-block;
+}
+.modal-content-content-style{
+  p{
+    display: inline-block;
+    vertical-align: top;
+    line-height: 30px;
+  }
+  textarea{
+    vertical-align: top;
+  }
+}
+.modal-content-content-style:after{
+  content: '';
+  display: block;
+  height: 0;
+  clear: both;
+  visibility: hidden;
+}
+
+.modal-content-btn{ position: absolute; text-align: right;  padding: 0 10px; right: 0; bottom: 20px;}
+.ant-modal-close{ right: 15px; top: 15px; z-index: 100;}
+
+.add-input{
+  font-size: 14px;
+  outline: none;
+  border: solid 1px #dbdbdb;
+  margin: 0;
+  padding: 0;
+  width: 400px;
+  border-radius:0;
+}
+.ant-input-number-focused, .ant-input-number:hover{ border-color: #dbdbdb; -webkit-box-shadow:none; box-shadow:none;}
+
+.add-user-icon{
+  width: 24px;
+  height: 24px;
+  border-radius: 12px;
+}
+.agree-input{
+  outline: none;
+  border: solid 1px #dbdbdb;
+  margin: 0;
+  padding: 0;
+  height: 24px;
+  float: left;
+}
+.agree-input-btn{
+  display: inline-block;
+  text-align: center;
+  background: #dbdbdb;
+  height: 24px;
+  float: left;
+  font-size: 14px;
+  padding: 0 10px;
+}
+.clear-float-wrap{
+  margin-top: 10px;
+  display: block;
+  height: 35px; 
+}
+.clear-float:after{
+  content: '';
+  height: 0;
+  display: block;
+  clear: both;
+  visibility: hidden;
+}
+
+.ant-modal-close-icon{
+  color: #ffffff;
+}
+
+.modal-form-label{
+  width: 80px;
+  margin-top:5px;
+  text-align:right;
+}
+
+.dlg-agree-refund-tip{
+  margin-bottom: '10px'
+}
+
+.dlg-agree-refund-title{
+margin-bottom: 10px;
+}
+
+.dlg-item{
+  float: left;
+  width: 33.3%;
+  margin:10px 0;
+  padding-right: 5%;
+  span, img{ display: inline-block; vertical-align: middle;}  
+  img{ width: 26px; height: 26px; border-radius:100%; margin-right: 10px; margin-bottom: 3px;}
+  .name{ max-width: 6em; white-space: nowrap; text-overflow: ellipsis; overflow: hidden;}
+}
+
+.dlg-choose-radiostyle{
+      display: block;
+      height:30px;
+      line-height: 30px;
+  }
+.dlg-choose-wrap{
+  overflow: auto; 
+  // max-height:200px; 
+  display:block;
+  .ant-radio-group{
+    overflow: hidden;
+    display: block;
+  }
+}
+
+.ant-modal{ padding-bottom: 0;}
+
+.ant-modal-wrap{
+  box-sizing: border-box; 
+  padding: 50px 0;
+  .ant-modal-close-x{
+    width: 24px;
+    height: 24px;
+    background-image: url("../../imgs/close-white.png");
+    background-repeat: no-repeat;
+    background-position: center center;
+    padding: 5px;
+    svg{ display: none;}
+  }
+}
+
+.modal-choose-distributor{
+  .diliveryman-box{ margin-top: -10px;}
+  .new-diliveryman{ padding:0 0 10px 20px; 
+    .ant-input{ margin-right: 10px;}
+  }
+  .delivery-type{ display: inline-block; vertical-align: middle;
+    
+  }
+}
+
+
+
+.CustmeModal{
+  .ant-modal-close-x{ background-image: url("../../imgs/close.png");}
+}
+
+.CustmeModalX{
+  .ant-modal-close-x{ background-image: url("../../imgs/close.png");}
+}

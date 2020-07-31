@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=Edge,Chrome=1">
+	<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
+	<meta name="description" content="【我的身边店】互联网平台助力实体店升级，为实体店逐渐优化成“实体+智能”于一体的“数字店铺”提供技术支持，助力服务创新，适应用户购买方式的改变，助力实体，让商业回归本源！">
+	<meta name="keywords" content="我的身边店,我的,身边,店,身边店,的身边店,品牌,诚信,配送,近距离,线下支付,到店自提,货到付款,区域,独家,周边,坐等,在身边,可信赖,易追溯,异业,导流,推广,代理商,配送员,推广者,商家提供各类服饰,美容,家居,数码,销售家电,数码通讯,电脑,家居百货,服装服饰,母婴,图书,食品">
+	<meta name="apple-mobile-web-app-capable" content="yes">
+	<meta name="apple-mobile-web-app-status-bar-style" content="black">
+	<meta name="format-detection" content="telephone=no">
+  <meta name="format-detection" content="email=no">
+  <title>我的身边店  - 您身边的品牌 服务品牌的你</title>
+  <link type="text/css" rel="stylesheet" href="print.css">  
+  <script src='jquery-3.3.1.min.js'></script>
+  <script src='jquery.tmpl.min.js'></script>
+</head>
+
+<body>
+  <button class="printBtn" onclick="window.print()">打印</button>
+  <div class="undefined" id="wrap">
+  </div>
+  <script id="orderprint_tmpl" type="text/x-jquery-tmpl">
+    <style>      
+      @media print{ 
+        @page { margin:5%;}                
+        body{ background: #fff; line-height: 1.5; font-size:8pt;}
+        body, div, p{ margin:0; padding: 0;}
+        .printBtn{ display:none;}
+        .orderprint { background: #FFF; color:#000000; padding: 0;}
+        .orderprint .top .shop-name{ font-size:20pt; padding:2pt 0;}
+        .buyer-info { font-size: 12pt; margin-top: 5pt; padding: 5pt 0;  margin-bottom: 2pt; border-top:dotted 1px #000; border-bottom:dotted 1px #000;}
+        .buyer-info p{ padding-bottom:3pt;}
+        .buyer-info .message{ margin-top: 2pt; padding-top:5pt; border-top:dotted 1px #000;}
+        .buyer-info .time, .buyer-info .dilivery-man{ font-size:8pt;}
+        .orderprint table { line-height:1.2; width:100%; font-size:8pt;}
+        .order-info th, .order-info td{ padding:2pt; font-size:8pt; font-weight: normal; text-align: left; vertical-align: top; font-weight: normal;}
+        .order-info th{ padding:4pt 2pt;}
+        .order-info .title{ padding-bottom: 0;}
+        .order-info thead th { border-bottom: dotted 1px #000;}
+        .order-info tfoot th { padding-bottom: 0;}
+        .order-info .total th{ border-top: dotted 1px #000;}
+      }
+    </style>
+    <div class="orderprint" id="printarea">        
+        <div class="top">
+            <img class="logo" src="logo-black.png" width="100px" />
+            <div class="shop-name">${storeName}</div> 
+            <div class="order-no">订单号：${orderSn}</div>
+            <div class="order-time">下单时间：${timeStamp2String(addTime * 1000)}</div>
+            <div>支付方式：
+                {{if paymentType == 0}}
+                  线下支付
+                {{else paymentType == 2}}
+                  货到付款
+                {{else}}
+                  线上支付
+                {{/if}}
+            </div>     
+        </div>
+        <div class="buyer-info">
+          <p>
+              {{if shippingType == 0}}
+              买家自提：
+              {{else}}
+              送至： 
+              {{/if}}
+            <br>${reciverInfo.trueName} ${reciverInfo.mobPhone}
+          </p>
+          {{if shippingType != 0}}
+          <p>${reciverInfo.address}</p>
+          {{else}}
+          <p class="delivery-code">取件码：${dlyoPickupCode}</p>
+          {{/if}}
+          <p class="time">
+              {{if shippingType == 0}}
+              自提时间：${timeStamp2String(deliveryTime * 1000,false,true)} 
+              {{else}}
+                {{if deliveryTime > 0}}
+                送达时间：${timeStamp2String(deliveryTime * 1000,false,true)} - ${timeStamp2String((deliveryTime+1800) * 1000,true,true)} 
+                {{else}}
+                送达时间：其它时间
+                {{/if}}
+              {{/if}}
+          </p>
+          {{if deliveryman}}
+          <p class="dilivery-man">配送员：${deliveryman.trueName}</p>
+          {{/if}}
+          {{if orderMessage}}
+            <p class="message">买家留言：<br>${orderMessage}</p>
+          {{/if}}
+        </div>       
+        <table class="order-info">
+          <thead>
+            <tr>
+              <th class="col1">名称</th>
+              <th class="col2">单价</th>
+              <th class="col3">数量</th>
+              <th class="col4">小计</th>
+            </tr>
+          </thead>
+          <tbody>
+            {{each(i, goods)	orderGoods}}
+            <tr>
+              <td colspan="4" class="title">
+                ${goods.goodsName}
+                {{if goods.goodsAttr}}
+                  <p class="intro">
+                   {{each(j, attr)	goods.goodsAttr}}
+                      ${attr.attrValue}; 
+                   {{/each}}
+                  </p>
+                {{/if}}
+              </td>  
+            </tr>
+            <tr>
+              <td class="col1"></td>
+              <td class="col2">¥${toFixed(goods.goodsPayPrice)}</td>
+              <td class="col3">${goods.goodsNum}</td>
+              <td class="col4">¥${toFixed(goods.goodsPayPrice*goods.goodsNum)}</td>
+            </tr>
+            {{/each}}
+          </tbody>
+          <tfoot>
+            <tr class="total">
+                <th class="col1">合计</th>
+                <th class="col2"></th>
+                <th class="col3">${totalGoodsNum}</th>
+                <th class="col4">¥${toFixed(goodsAmount)}</th>
+            </tr>
+            <tr>
+                <th class="col1">运费</th>
+                <th class="col2"></th>
+                <th class="col3"></th>
+                <th class="col4">¥${toFixed(shippingFee)}</th>
+            </tr>
+            <tr>
+                <th class="col1">优惠</th>
+                <th class="col2"></th>
+                <th class="col3"></th>
+                <th class="col4">¥${toFixed(couponAmount)}</th>
+            </tr>
+            <tr>
+                <th class="col1">总额</th>
+                <th class="col2"></th>
+                <th class="col3"></th>
+                <th class="col4">¥${toFixed(orderAmount)}</th>
+            </tr>
+          </tfoot>
+        </table>        
+      </div>
+  </script>
+  <script type="text/javascript">
+    //在Jquery里格式化Date日期时间数据
+    function timeStamp2String(time,onlyTime,noSecond) {
+      var datetime = new Date();
+      datetime.setTime(time);
+      var year = datetime.getFullYear();
+      var month = datetime.getMonth() + 1 < 10 ? "0" + (datetime.getMonth() + 1) : datetime.getMonth() + 1;
+      var date = datetime.getDate() < 10 ? "0" + datetime.getDate() : datetime.getDate();
+      var hour = datetime.getHours() < 10 ? "0" + datetime.getHours() : datetime.getHours();
+      var minute = datetime.getMinutes() < 10 ? "0" + datetime.getMinutes() : datetime.getMinutes();
+      var second = datetime.getSeconds() < 10 ? "0" + datetime.getSeconds() : datetime.getSeconds();
+      var result = year + "-" + month + "-" + date+" "+hour+":"+minute+":"+second;
+      if(onlyTime&&noSecond){
+        result = hour+":"+minute;
+      }else{
+        if(noSecond){
+          result = year + "-" + month + "-" + date+" "+hour+":"+minute;
+        }
+        if(onlyTime){
+          result = year + "-" + month + "-" + date;
+        }   
+      } 
+      return  result;
+    }
+    function toFixed(money) {
+      money = money || 0;
+      var m = (money / 100);
+      return m.toFixed(2)
+    }
+    function render(order) {
+      $('#orderprint_tmpl').tmpl(order).appendTo('#wrap');       
+    }
+    window.addEventListener('message', function (e) {
+      var order = e.data;
+      render(order);      
+    }); 
+
+      // $('.printBtn').on('click',function(){
+      //    window.print();      
+      // });  
+
+   
+  </script>
+</body>
+
+</html>

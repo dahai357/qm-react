@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>订单后台管理系统</title>
+    <style type="text/css">
+        .contanier {
+            position: fixed;
+            background: #f2f1f6;
+            top: 0;
+            bottom: 0;
+            left: 0;
+            right: 0;
+        }
+    </style>
+    <script type="text/javascript" src="./public/cef-bridge.js"></script>
+    <script type="text/javascript" src="./public/cef-utils.js"></script>
+    <script type="text/javascript" src="./public/down.js"></script>
+</head>
+
+<body>
+    <div id='app' class='contanier'></div>
+    <script>
+        // You can also require other files to run in this process
+        require('../renderer.js')
+    </script>
+</body>
+
+</html>

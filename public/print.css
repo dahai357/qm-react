@@ -1,0 +1,15 @@
+body{ font-family: "Microsoft Yahei", SimSun; background: #fff; line-height: 1.5; font-size:12px}
+body, div, p{ margin:0; padding: 0;}
+
+.printBtn{ color:#000; border:1px solid #b4b4b4; border-radius:.9em; position: absolute; right: 40px; top: 40px; padding: 0 1em; background: #fff; line-height: 1.8; font-size: 16px;}
+.printBtn:hover{ color: #ff8519; border-color:#ff8519; cursor: pointer;}
+.orderprint { background: #FFF; color:#000000; padding: 20px; }
+.orderprint .top .shop-name{ font-size:26px; padding: 5px 0;}
+.buyer-info { font-size: 18px; margin-top: 10px; padding: 5px 0; border-top:dotted 1px #000; border-bottom:dotted 1px #000; margin-bottom: 2px;}
+.buyer-info .time, .buyer-info .dilivery-man{ font-size:12px;}
+.buyer-info .message{ margin-top: 5px; padding-top:5px; border-top:dotted 1px #000;}
+.orderprint table { line-height:1.2; width:100%; font-size: 12px;}
+.order-info th, .order-info td{ padding:5px; text-align: left; vertical-align: top; font-weight: normal;}
+.order-info .title{ padding-bottom: 0;}
+.order-info thead th { border-bottom: dotted 1px #000;}
+.order-info .total th{ border-top: dotted 1px #000;}

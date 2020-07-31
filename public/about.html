@@ -1,0 +1,190 @@
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <style>
+        body{
+            color: #000;
+            font-family: "Helvetica Neue", Tahoma, "Microsoft Yahei", "PingFang SC", "ST Heiti", SimHei, sans-serif, "Helvetica Neue", Tahoma, SimSun, "PingFang SC", "ST Heiti", sans-serif;
+            font-size: 12px;
+            line-height: 1.5;
+            margin:0;
+            padding: 0;
+        }
+        .dialog-left-wrap {
+            position: relative;
+            width: 100%;
+            height: 100%;
+        }
+
+        .dialog-left-label {
+            height: 110px;
+            width: 100%;
+            margin-left: 20px;
+            margin-top: 20px;
+        }
+
+        .dialog-left-menu {
+            height: 40px;
+            width: 100%;
+            cursor: pointer;
+        }
+
+        .dialog-left-menu-label {
+            padding: 10px 0 10px 20px;
+        }
+
+        .dialog-left-menu-active {
+            background: #E0E4ED;
+        }
+
+        .dialog-right-wrap {
+            position: absolute;
+            top: 40px;
+            left: 40px;
+            right: 40px;
+            bottom: 40px;
+        }
+
+        .dialog-right-wrap .avatar {
+            height: 100px;
+            width: 100px;
+            border-radius: 50px;
+            border: solid 1px #dddddd;
+        }
+
+        .current-version {
+            margin-top: 60px;
+        }
+
+        .version-label {
+
+            margin-top: 10px;
+            color: #f98c25
+        }
+
+        .shopName {
+            margin-top: 5px;
+        }
+
+        .userName {
+            margin-top: 10px;
+        }
+
+        .right-btn {
+            margin-top: 30px;
+            border-radius: 15px;
+            border: solid 1px #E7E7E7;
+        }
+
+        .logo {}
+
+        .dialog-right-wrap .item {
+            transform: translate(-50%, -50%);
+            left: 50%;
+            top: 40%;
+            position: absolute;
+        }
+
+        .dialog-right-top {
+            padding-left: 20px;
+            padding-top: 20px;            
+        }
+
+        .dialog-right-footer {
+            position: absolute;
+            left: 0;
+            text-align: center;
+            bottom: 20px;
+            right: 0;
+            font-size: 12px;
+            color: #757575;
+        }
+        .dialog-right-footer-item{
+          padding: 5px 0px 5px;
+          text-align: center;
+        }
+        .service-proxy{
+            color: #ff8518;
+        }
+        .anticon-close{ display: block; width: 14px; height: 14px; background: url("../src/app/cmpt/imgs/close.png") no-repeat;}
+        .anticon-close svg{ display: none;}
+    </style>
+    <script type="text/javascript" src="cef-bridge.js"></script>
+    <script type="text/javascript" src="cef-utils.js"></script>
+    <script type="text/javascript">
+        function closeX() {
+            try {
+                CefUtils.sendNativeEvent('ABOUT_CLOSE', { n: 1 }, false)
+            } catch (e) { alert(e) }
+        }
+
+        function openUrlX() {
+            try {
+                CefUtils.sendNativeEvent('OPEN_URL', "http://www.shenbd.com/service/useragreement.html", false) 
+            } catch (e) { }
+        }
+
+
+        function closeAll() {
+            try {
+                closeX()
+            } catch (e) { }
+
+            try {
+                closey()
+            } catch (e) { }
+        }
+
+        function openUrl() {
+            try {
+                openUrlX()
+            } catch (e) { }
+
+            try {
+                openUrly()
+            } catch (e) { }
+        }
+
+    </script>
+</head>
+
+<body style="-webkit-app-region: drag;background: #f2f7ff">
+    <div onclick="closeAll()" style="position: absolute; right: 10px; top: 10px; z-index: 9999; -webkit-app-region: no-drag;">
+        <i class="anticon anticon-close"><svg
+                viewBox="64 64 896 896" class="" data-icon="close" width="1em" height="1em" fill="currentColor"
+                aria-hidden="true">
+                <path d="M563.8 512l262.5-312.9c4.4-5.2.7-13.1-6.1-13.1h-79.8c-4.7 0-9.2 2.1-12.3 5.7L511.6 449.8 295.1 191.7c-3-3.6-7.5-5.7-12.3-5.7H203c-6.8 0-10.5 7.9-6.1 13.1L459.4 512 196.9 824.9A7.95 7.95 0 0 0 203 838h79.8c4.7 0 9.2-2.1 12.3-5.7l216.5-258.1 216.5 258.1c3 3.6 7.5 5.7 12.3 5.7h79.8c6.8 0 10.5-7.9 6.1-13.1L563.8 512z"></path>
+            </svg></i>
+    </div>
+    <div class="dialog-right">
+        <div>
+            <div class="dialog-right-top"> 关于我的身边店</div>
+            <div class="dialog-right-wrap"><img class="item logo" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAIwAAABuCAYAAAD1TPu3AAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAyZpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuNi1jMDY3IDc5LjE1Nzc0NywgMjAxNS8wMy8zMC0yMzo0MDo0MiAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RSZWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZVJlZiMiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENDIDIwMTUgKFdpbmRvd3MpIiB4bXBNTTpJbnN0YW5jZUlEPSJ4bXAuaWlkOkMwRDNDMUQ3RDhGMjExRTg5ODMxOUFBMTVGOEFBNUFBIiB4bXBNTTpEb2N1bWVudElEPSJ4bXAuZGlkOkMwRDNDMUQ4RDhGMjExRTg5ODMxOUFBMTVGOEFBNUFBIj4gPHhtcE1NOkRlcml2ZWRGcm9tIHN0UmVmOmluc3RhbmNlSUQ9InhtcC5paWQ6QzBEM0MxRDVEOEYyMTFFODk4MzE5QUExNUY4QUE1QUEiIHN0UmVmOmRvY3VtZW50SUQ9InhtcC5kaWQ6QzBEM0MxRDZEOEYyMTFFODk4MzE5QUExNUY4QUE1QUEiLz4gPC9yZGY6RGVzY3JpcHRpb24+IDwvcmRmOlJERj4gPC94OnhtcG1ldGE+IDw/eHBhY2tldCBlbmQ9InIiPz6YbKSdAAAXEElEQVR42uxd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"></div>
+            <div class="dialog-right-footer">
+                <div class="dialog-right-footer-item">
+                    <script>
+                        document.write('@' + new Date().getFullYear() + ' 福州千盟经贸有限公司<br/>版权所有')
+                    </script>
+                </div>
+                <div class="dialog-right-footer-item service-proxy" style="-webkit-app-region: no-drag;cursor: pointer;" onclick="openUrl()">服务协议</div>
+            </div>
+        </div>
+    </div>
+</body>
+<script>
+    const { ipcRenderer, shell } = require('electron')
+    function closey() {
+        try {
+            ipcRenderer.send('ABOUT_CLOSE');
+        } catch (e) { }
+    }
+
+    function openUrly() {
+        try {
+            shell.openExternal("http://www.shenbd.com/service/useragreement.html")
+        } catch (e) { }
+    }
+</script>
+
+</html>
