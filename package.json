@@ -44,7 +44,7 @@
         "electron-winstaller": "^2.7.0",
         "electron-wix-msi": "^2.1.1",
         "file-loader": "^2.0.0",
-        "html-webpack-plugin": "^3.2.0",
+        "html-webpack-plugin": "^5.5.0",
         "immutable": "^4.0.0-rc.12",
         "less": "^3.8.1",
         "less-loader": "^4.1.0",
